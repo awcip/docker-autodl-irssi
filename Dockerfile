@@ -13,7 +13,7 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*
 
 USER user
-RUN wget https://github.com/autodl-community/autodl-irssi/releases/download/${version}/autodl-irssi-v${version}.zip -O /tmp/autodl-irssi.zip \
+RUN wget https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip -O /tmp/autodl-irssi.zip \
     && mkdir -p ${HOME}/.irssi/scripts/autorun \
     && unzip -o /tmp/autodl-irssi.zip -d ${HOME}/.irssi/scripts \
     && cp ${HOME}/.irssi/scripts/autodl-irssi.pl ${HOME}/.irssi/scripts/autorun/autodl-irssi.pl \
