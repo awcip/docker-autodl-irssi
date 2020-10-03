@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 
 RUN set -eux; \
     apk --no-cache add \
-        curl \
+		ca-certificates \
         irssi \
         irssi-perl \
         unzip;
@@ -17,9 +17,8 @@ RUN set -eux; \
     mkdir -p "$HOME/.autodl"; \
     touch "$HOME/.autodl/autodl.cfg"; \
     cd "$HOME/.irssi/scripts"; \
-    curl -sL https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip \
-         --output autodl-irssi.zip; \
-    unzip -o autodl-irssi.zip; \
+    wget https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip; \
+    unzip -o autodl-irssi-v2.6.2.zip; \
     rm autodl-irssi.zip; \
     cp autodl-irssi.pl autorun; \
     chown -R user:user "$HOME"
