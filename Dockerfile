@@ -4,6 +4,7 @@ USER root
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
+    unzip \
     libarchive-zip-perl \
     libdigest-sha-perl \
     libhtml-html5-entities-perl \
