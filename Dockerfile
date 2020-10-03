@@ -1,14 +1,16 @@
 FROM irssi
 
 USER root
-RUN set -x \
-&& apk --no-cache add \
-    perl-archive-zip \
-    perl-digest-sha1 \
-    perl-html-parser \
-    perl-json \
-    perl-net-ssleay \
-    perl-xml-libxml
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+    libarchive-zip-perl \
+    libdigest-sha-perl \
+    libhtml-html5-entities-perl \
+    libjson-perl \
+    libcrypt-ssleay-perl \
+    libxml-libxml-perl; \
+    rm -rf /var/lib/apt/lists/*
 
 USER user
 RUN wget https://github.com/autodl-community/autodl-irssi/releases/download/${version}/autodl-irssi-v${version}.zip -O /tmp/autodl-irssi.zip \
