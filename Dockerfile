@@ -8,7 +8,14 @@ RUN set -eux; \
     apk --no-cache add \
         ca-certificates \
         irssi \
-        irssi-perl \
+        perl-dev \
+        perl-libwww \
+        perl-archive-zip \
+        perl-digest-sha1 \
+        perl-html-parser \
+        perl-json \
+        perl-net-ssleay \
+        perl-xml-libxml \
         unzip;
 
 RUN set -eux; \
