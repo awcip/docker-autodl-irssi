@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 
 RUN set -eux; \
     apk --no-cache add \
-		ca-certificates \
+        ca-certificates \
         irssi \
         irssi-perl \
         unzip;
