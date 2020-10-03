@@ -13,7 +13,9 @@ RUN set -eux; \
     libjson-perl \
     libcrypt-ssleay-perl \
     libxml-libxml-perl; \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*; \
+    virtualenv autotorrent-env; \
+    autotorrent-env/bin/pip install autotorrent
 
 USER user
 RUN wget https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip -O /tmp/autodl-irssi.zip \
