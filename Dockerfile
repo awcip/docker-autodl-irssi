@@ -14,6 +14,8 @@ RUN set -eux; \
     libcrypt-ssleay-perl \
     libxml-libxml-perl; \
     rm -rf /var/lib/apt/lists/*; \
+    python3 -m pip install --upgrade pip; \
+    python3 -m pip install --no-cache-dir virtualenv; \
     virtualenv autotorrent-env; \
     autotorrent-env/bin/pip install autotorrent
 
