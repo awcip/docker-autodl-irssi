@@ -1,37 +1,21 @@
-FROM alpine
+FROM irssi
 
-ENV HOME /home/user
-
-ENV LANG C.UTF-8
-
-RUN set -eux; \
-    apk --no-cache add \
-        ca-certificates \
-        irssi \
-        perl-dev \
-        perl-libwww \
-        perl-archive-zip \
-        perl-digest-sha1 \
-        perl-html-parser \
-        perl-json \
-        perl-net-ssleay \
-        perl-xml-libxml \
-        unzip;
-
-RUN set -eux; \
-    adduser -u 1000 -D -h "$HOME" user; \
-    mkdir -p "$HOME/.irssi/scripts/autorun"; \
-    mkdir -p "$HOME/.autodl"; \
-    touch "$HOME/.autodl/autodl.cfg"; \
-    cd "$HOME/.irssi/scripts"; \
-    wget https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip; \
-    unzip -o autodl-irssi-v2.6.2.zip; \
-    rm autodl-irssi-v2.6.2.zip; \
-    cp autodl-irssi.pl autorun; \
-    chown -R user:user "$HOME"
-
-WORKDIR $HOME
+USER root
+RUN set -x \
+&& apk --no-cache add \
+    perl-archive-zip \
+    perl-digest-sha1 \
+    perl-html-parser \
+    perl-json \
+    perl-net-ssleay \
+    perl-xml-libxml
 
 USER user
+RUN wget https://github.com/autodl-community/autodl-irssi/releases/download/${version}/autodl-irssi-v${version}.zip -O /tmp/autodl-irssi.zip \
+    && mkdir -p ${HOME}/.irssi/scripts/autorun \
+    && unzip -o /tmp/autodl-irssi.zip -d ${HOME}/.irssi/scripts \
+    && cp ${HOME}/.irssi/scripts/autodl-irssi.pl ${HOME}/.irssi/scripts/autorun/autodl-irssi.pl \
+    && mkdir ${HOME}/.autodl \
+    && rm /tmp/autodl-irssi.zip
 
 CMD ["irssi"]
