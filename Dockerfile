@@ -5,6 +5,8 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
     unzip \
+    python3 \
+    python3-pip \
     libarchive-zip-perl \
     libdigest-sha-perl \
     libhtml-html5-entities-perl \
