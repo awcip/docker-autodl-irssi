@@ -19,7 +19,7 @@ RUN set -eux; \
     cd "$HOME/.irssi/scripts"; \
     wget https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip; \
     unzip -o autodl-irssi-v2.6.2.zip; \
-    rm autodl-irssi.zip; \
+    rm autodl-irssi-v2.6.2.zip; \
     cp autodl-irssi.pl autorun; \
     chown -R user:user "$HOME"
 
