@@ -17,7 +17,8 @@ RUN set -eux; \
     python3 -m pip install --upgrade pip; \
     python3 -m pip install --no-cache-dir virtualenv; \
     virtualenv autotorrent-env; \
-    autotorrent-env/bin/pip install autotorrent
+    autotorrent-env/bin/pip install autotorrent; \
+    chown -R user:user "$HOME"
 
 USER user
 RUN wget https://github.com/autodl-community/autodl-irssi/releases/download/2.6.2/autodl-irssi-v2.6.2.zip -O /tmp/autodl-irssi.zip \
