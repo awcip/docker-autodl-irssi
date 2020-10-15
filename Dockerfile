@@ -4,6 +4,7 @@ USER root
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
+    curl \
     unzip \
     python3 \
     python3-pip \
@@ -14,8 +15,8 @@ RUN set -eux; \
     libcrypt-ssleay-perl \
     libxml-libxml-perl; \
     rm -rf /var/lib/apt/lists/*; \
-    python3 -m pip install --upgrade pip; \
-    python3 -m pip install --no-cache-dir virtualenv; \
+    python3 -m pip install --no-cache-dir --upgrade pip; \
+    python3 -m pip install --no-cache-dir --upgrade virtualenv; \
     virtualenv autotorrent-env; \
     autotorrent-env/bin/pip install autotorrent; \
     chown -R user:user "$HOME"
