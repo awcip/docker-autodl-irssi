@@ -1,29 +1,4 @@
 # autodl-irssi
 Fast cross seeding with irssi and autotorrent
 The purpose of this docker is to download torrent files via irssi and feed them into autotorrent.
-
-docker-compose-yml
-```
-  autodl-irssi:
-    image: awcip/autodl-irssi
-    container_name: autodl-irssi
-    stdin_open: true
-    tty: true
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-    volumes:
-      - /data/:/data/
-      # Mount autodl config
-      - ./autodl-irssi/autodl/:/home/user/.autodl/
-      # Mount eg. the auto-curl-pvr.sh to feed into radarr/sonarr
-      - ./autodl-irssi/autodl-curl-pvr.sh:/home/user/autodl-curl-pvr.sh:ro
-      - ./autodl-irssi/base-urls.cfg:/home/user/base-urls.cfg:ro
-      - ./autodl-irssi/keys/:/home/user/keys/:ro
-      # Mount the download script
-      - ./autodl-irssi/download.sh:/home/user/download.sh:ro
-      # Mount the autotorrent storage which should be shared with the deluge docker
-      - ./autotorrent/:/autotorrent
-    restart: unless-stopped
-```
+See docker-compose.yml for example usage.
